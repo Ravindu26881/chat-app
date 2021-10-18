@@ -1,4 +1,5 @@
 <template>
+<div v-bind:class="backgroundTheme">
   <nav v-bind:class="navTheme" class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,12 +9,14 @@
       <div class="navbar-nav">
         <router-link class="nav-item nav-link" to="/">Home</router-link>
         <router-link class="nav-item nav-link" to="/about">About</router-link>
+        <router-link class="nav-item nav-link" to="/settings">Settings</router-link>
         <a class="nav-item nav-link" @click="darkToggle ()">Dark</a>
         <a class="nav-item nav-link" @click="lightToggle ()">Light</a>
       </div>
     </div>
   </nav>
   <router-view/>
+</div>
 </template>
 
 <script>
@@ -30,6 +33,12 @@ export default {
       return {
         'navbar-light bg-light': this.darkTheme === false,
         'navbar-dark bg-dark': this.darkTheme === true
+      }
+    },
+    backgroundTheme: function () {
+      return {
+        'light': this.darkTheme === false,
+        'dark': this.darkTheme === true
       }
     }
   },
@@ -54,4 +63,12 @@ export default {
   color: #2c3e50;
 }
 
+.dark {
+  background-color: #1d1d1d;
+  color: white;
+}
+.light {
+  background-color: unset;
+  color: black;
+}
 </style>

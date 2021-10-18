@@ -1,6 +1,6 @@
 <template>
   <div class="asdasd">
-    asdasd
+    2
   </div>
 </template>
 
